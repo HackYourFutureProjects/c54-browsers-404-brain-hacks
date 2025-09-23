@@ -1,74 +1,208 @@
-# Getting Started
+> **404 Brain Hacks – Quiz IQ Programming**
 
-This repository functions as the basis of the quiz project in the [Browsers module](https://github.com/HackYourFuture/Browsers). Before the first group meeting, have a look through this code and try to understand how it works and how it is organised. We will explain the idea behind the structure below as well as the Backlog (which will identify what is needed to be implemented).
+---
 
-We have already implemented a very basic UI that can go through the questions to show you how this kind of code is split and how you can use the structure to your advantage. Have a look through it before your first group meeting as it can take a little while to get your head around it!
+## I Added
 
-## Development
+- Created a new branch: **`DashaDev`**
+- Installed and configured **TailwindCSS**
+- Added **Google Fonts (Poppins)**
+- Designed the first page (`index.html`) with Figma inspiration
+- Created design in Figma
+- Created logo in Adobe Illustrator
+- Implemented **Welcome Page**
+- Added **constants.js** for reusable IDs
 
-To run this project locally you will need to open `index.html` in your browser using a local server. LiveServer, `http-server`, `study-lenses`, or any other local static server will work.
+---
 
-## Installing Dependencies
+## TailwindCSS Setup
 
-There are no dependencies needed to run the website, everything is prepared to work with vanilla JavaScript. However, if you want to install prettier for this project then run (generally you always want to do this if you see a `package.json` file):
+### 1 Install dependencies
 
-- `npm install`
-
-# Structure
-
-Instead of writing all code in a single JavaScript file, we want you to split your code over several files.
-The structure of this project is explained in the next video
-
-[![Project Structure YouTube Video](https://i.imgur.com/hDcLYFt.png)](https://youtu.be/bysBqtSKBpQ)
-
-Let's run through the folders:
-
-```
-public
-src
-└── pages
-└── views
-└── app.js
-└── constants.js
-└── data.js
-index.html
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
 ```
 
-- `public` this contains the static files that can be used by our `index.html` file
-- `src` this contains all of our JavaScript code
-  - `pages` this folder contains our functions that handle user interactions. You can also see it as the code that processes and updates the data or DOM
-    it also contains our code that links up our handler code to the DOM.
-  - `views` this contains code to define what the DOM will look like. They will create the DOM element and give it back. They should never read from/write to the dom, that is what the pages do.
-  - `app.js` this file our initialisation code. Generally this code should only run once and starts the application
-  - `data.js` this is our data model. Anything we need to store in the browser we place inside the data file
+### 2 Tailwind Configuration (`tailwind.config.js`)
 
-# Goal and Backlog
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./*.{html,js}', './public/*.html', './src/**/*.{html,js}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+};
+```
 
-So what should be built? Below is a collection of user stories you can choose from. Stories inside of each priority level are not necessarily in order, it's up to your group to decide how they fit into your strategy. These are also just suggestion, feel free to change them or create your own! Feel free to get creative.
+### 3 Tailwind Directives (`style.css`)
 
-Choose a desired end result at the start of the project.
-By choosing an existing example, the goal of the project will be clear to everyone in the team.
-Another benefit is that it will be easier to come up with the necessary tasks to create your quiz.
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-Some examples of online quizes that you might like:
+@layer base {
+  body {
+    @apply font-poppins;
+  }
+}
+```
 
-- https://wwbm.com/
-- https://www.typeform.com/templates/t/trivia/
-- https://lovattspuzzles.com/online-puzzles-competitions/ultimate-online-trivia-quiz/
-- https://www.lenstore.co.uk/vc/colour-is-in-the-eye-of-the-beholder/#/game
-- https://heywise.com/quiz/lets-find-out-if-you-follow-gordon-ramsay/1/
+### 4 Connect Generated CSS in `index.html`
 
-When you have chosen your goal, you can create tasks as issues on Github and assign them to team members.
-Tasks could look like this, using the [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) labels for prioritization
+```html
+<link href="./public/output.css" rel="stylesheet" />
+```
 
-- [x] (must have) A user can see one question at a time, stepping through the quiz
-- [ ] (must have) A user can select an answer for each question
-- [ ] (must have) Change the <title>
-- [ ] (must have) add a favicon
-- [ ] (should have) A user can see what the correct answer is after they selected their answer.
-- [ ] (should have) A user can see their score update in real-time as they select answers
-- [ ] (should have) A user can refresh the page and still have his/her given answers available
-- [ ] (could have) A user can "skip" the question and learn the correct answer, this forfeits the question
-- [ ] (could have) Transition between pages or question look fancy like TypeForm for example
+### 5 Connect Google Fonts in `index.html`
 
-You should create tasks that fit with your goal, these tasks serve just as an example.
+```html
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+```
+
+---
+
+## First Page (`index.html`)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>404 Brain Hacks</title>
+    <link href="./public/output.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-hero">
+    <button
+      class="theme-toggle"
+      onclick="toggleTheme()"
+      aria-label="Toggle theme"
+    >
+      <span id="theme-icon"></span>
+    </button>
+
+    <div class="bg-overlay min-h-screen">
+      <div id="user-interface" class="centered"></div>
+    </div>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
+```
+
+✅ Theme toggle button prepared (functionality will be added later).
+
+---
+
+## Welcome Page (`welcomeView.js`)
+
+- Imports constants:
+
+```js
+import { START_QUIZ_BUTTON_ID, USER_NAME_INPUT_ID } from '../constants.js';
+
+/**
+ * Create the welcome screen
+ * @returns {Element}
+ */
+export const createWelcomeElement = () => {
+  const element = document.createElement('div');
+  element.innerHTML = String.raw`
+   <div class="flex justify-center mt-[5vh] md:mt-[10vh]">
+  <img src="./public/images/logo.svg" alt="logo" class="h-24 sm:h-32 md:h-40 lg:h-50 w-auto">
+    </div>
+
+    <h2 class="text-white text-lg font-medium mb-8 tracking-widest">404 BRAIN HACKS</h2>
+    
+    <h1 class="text-white text-5xl md:text-6xl font-bold mb-6 tracking-wide">
+        QUIZ IQ PROGRAMMING
+    </h1>
+    
+    <p class="text-white/90 text-lg mb-12 max-w-md mx-auto">
+        This project is an interactive quiz with 10 questions and four answer options for each.
+    </p>
+    
+    <button 
+        id="${START_QUIZ_BUTTON_ID}"
+        class="w-full max-w-md bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium py-4 px-8 rounded-full text-lg transition-all duration-300 hover:from-orange-600 hover:to-red-600 hover:scale-105 mb-6"
+    >
+        START
+    </button>
+    
+    <input 
+        type="text" 
+        id="${USER_NAME_INPUT_ID}"
+        placeholder="WRITE YOUR NAME"
+        class="w-full max-w-md bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 py-4 px-6 rounded-full text-center font-medium text-lg outline-none focus:border-white/40 focus:bg-white/20 transition-all duration-300"
+    />
+    
+    <p class="text-white/70 text-sm mt-8 max-w-md mx-auto">
+        It helps users test their knowledge of the DOM and JavaScript in a fun way.
+    </p>
+    
+    <p class="text-white/50 text-xs mt-8">
+        2025 404 brain hacks. All rights reserved.<br>
+        This quiz is created for educational and entertainment purposes only. The questions are designed to test knowledge of DOM and JavaScript. Results should not be considered as professional certification.
+    </p>
+  `;
+  return element;
+};
+```
+
+- Contains:
+
+  - Logo
+  - Start button
+  - Input field (username)
+  - Introductory description
+
+---
+
+## Constants (`constants.js`)
+
+```js
+export const SHOW_ANSWER_BUTTON_ID = 'show-answer-button';
+export const USER_NAME_INPUT_ID = 'user-name';
+export const THEME_TOGGLE_ID = 'theme-toggle';
+```
+
+---
+
+## Project Structure
+
+```
+project/
+ ├── public/
+ │   ├── images/
+ │   ├── output.css
+ │   ├── style.css
+ │   └── README.md
+ ├── src/
+ │   ├── pages/
+ │   ├── views/
+ │   │   ├── answerView.js
+ │   │   ├── questionView.js
+ │   │   ├── welcomeView.js
+ │   │   └── README.md
+ │   ├── app.js
+ │   ├── constants.js
+ │   └── data.js
+ ├── index.html
+ ├── tailwind.config.js
+ └── .gitignore
+```
