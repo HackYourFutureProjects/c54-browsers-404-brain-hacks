@@ -1,4 +1,4 @@
-import { START_QUIZ_BUTTON_ID } from '../constants.js';
+import { START_QUIZ_BUTTON_ID, USER_NAME_INPUT_ID } from '../constants.js';
 
 /**
  * Create the welcome screen
@@ -7,8 +7,42 @@ import { START_QUIZ_BUTTON_ID } from '../constants.js';
 export const createWelcomeElement = () => {
   const element = document.createElement('div');
   element.innerHTML = String.raw`
-    <h1>Welcome</h1>
-    <button id="${START_QUIZ_BUTTON_ID}">start quiz</button>
+   <div class="flex justify-center mt-[5vh] md:mt-[10vh]">
+  <img src="./public/images/logo.svg" alt="logo" class="h-24 sm:h-32 md:h-40 lg:h-50 w-auto">
+    </div>
+
+    <h2 class="text-white text-lg font-medium mb-8 tracking-widest">404 BRAIN HACKS</h2>
+    
+    <h1 class="text-white text-5xl md:text-6xl font-bold mb-6 tracking-wide">
+        QUIZ IQ PROGRAMMING
+    </h1>
+    
+    <p class="text-white/90 text-lg mb-12 max-w-md mx-auto">
+        This project is an interactive quiz with 10 questions and four answer options for each.
+    </p>
+    
+    <button 
+        id="${START_QUIZ_BUTTON_ID}"
+        class="w-full max-w-md bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium py-4 px-8 rounded-full text-lg transition-all duration-300 hover:from-orange-600 hover:to-red-600 hover:scale-105 mb-6"
+    >
+        START
+    </button>
+    
+    <input 
+        type="text" 
+        id="${USER_NAME_INPUT_ID}"
+        placeholder="WRITE YOUR NAME"
+        class="w-full max-w-md bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 py-4 px-6 rounded-full text-center font-medium text-lg outline-none focus:border-white/40 focus:bg-white/20 transition-all duration-300"
+    />
+    
+    <p class="text-white/70 text-sm mt-8 max-w-md mx-auto">
+        It helps users test their knowledge of the DOM and JavaScript in a fun way.
+    </p>
+    
+    <p class="text-white/50 text-xs mt-8">
+        2025 404 brain hacks. All rights reserved.<br>
+        This quiz is created for educational and entertainment purposes only. The questions are designed to test knowledge of DOM and JavaScript. Results should not be considered as professional certification.
+    </p>
   `;
   return element;
 };
