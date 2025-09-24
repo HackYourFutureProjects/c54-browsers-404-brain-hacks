@@ -108,11 +108,13 @@ export const initQuestionPage = () => {
     list.appendChild(li);
   });
 
+  // live score text
   const scoreEl = document.getElementById(SCORE_ID);
   if (scoreEl) {
     scoreEl.textContent = `Score: ${quizData.score}/${quizData.questions.length}`;
   }
 
+  // bind the delegated listener once
   if (!uiBound) {
     document.addEventListener('click', handleUIClick);
     uiBound = true;
