@@ -13,11 +13,11 @@ export const createWelcomeElement = () => {
 
     <h2 class="text-white text-lg font-medium mb-8 tracking-widest">404 BRAIN HACKS</h2>
     
-    <h1 class="text-white text-5xl md:text-6xl font-bold mb-6 tracking-wide">
-        QUIZ IQ PROGRAMMING
+    <h1 class="text-white text-[44px] md:text-[48px] lg:text-[72px] font-bold mb-6 tracking-wide text-center">
+  QUIZ IQ PROGRAMMING
     </h1>
     
-    <p class="text-white/90 text-lg mb-12 max-w-md mx-auto">
+    <p class="text-white/90 text-[16px] md:text-[18px] lg:text-[20px] mb-12 max-w-md mx-auto">
         This project is an interactive quiz with 10 questions and four answer options for each.
     </p>
     
@@ -35,11 +35,11 @@ export const createWelcomeElement = () => {
         class="w-full max-w-md bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 py-4 px-6 rounded-full text-center font-medium text-lg outline-none focus:border-white/40 focus:bg-white/20 transition-all duration-300"
     />
     
-    <p class="text-white/70 text-sm mt-8 max-w-md mx-auto">
+    <p class="text-white/70 text-[14px] md:text-[16px] lg:text-[18px] mt-8 max-w-md mx-auto">
         It helps users test their knowledge of the DOM and JavaScript in a fun way.
     </p>
     
-    <p class="text-white/50 text-xs mt-8">
+    <p class="text-white/50 text-[12px] md:text-[14px] lg:text-[16px] mt-8">
         2025 404 brain hacks. All rights reserved.<br>
         This quiz is created for educational and entertainment purposes only. The questions are designed to test knowledge of DOM and JavaScript. Results should not be considered as professional certification.
     </p>
