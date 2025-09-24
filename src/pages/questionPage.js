@@ -1,13 +1,13 @@
-  import {
-    ANSWERS_LIST_ID,
-    NEXT_QUESTION_BUTTON_ID,
-    SKIP_QUESTION_BUTTON_ID,
-    USER_INTERFACE_ID,
-    SCORE_ID,
-  } from '../constants.js';
-  import { createQuestionElement } from '../views/questionView.js';
-  import { quizData } from '../data.js';
-  import { initResultsPage } from './resultsPage.js';
+import {
+  ANSWERS_LIST_ID,
+  NEXT_QUESTION_BUTTON_ID,
+  SKIP_QUESTION_BUTTON_ID,
+  USER_INTERFACE_ID,
+  SCORE_ID,
+} from '../constants.js';
+import { createQuestionElement } from '../views/questionView.js';
+import { quizData } from '../data.js';
+import { initResultsPage } from './resultsPage.js';
 
 let uiBound = false;
 function handleUIClick(e) {
@@ -37,12 +37,12 @@ function handleUIClick(e) {
       quizData.score += 1;
     } else {
       answerBtn.classList.add('answer--wrong');
-      const correctBtn = buttons.find(b => b.dataset.key === current.correct);
+      const correctBtn = buttons.find((b) => b.dataset.key === current.correct);
       if (correctBtn) correctBtn.classList.add('answer--correct-hint');
     }
 
     // lock all answer buttons
-    buttons.forEach(b => {
+    buttons.forEach((b) => {
       b.classList.add('answer--locked');
       b.disabled = true;
     });

@@ -1,12 +1,12 @@
-  import { START_QUIZ_BUTTON_ID, USER_NAME_INPUT_ID } from '../constants.js';
+import { START_QUIZ_BUTTON_ID, USER_NAME_INPUT_ID } from '../constants.js';
 
-  /**
-   * Create the welcome screen
-   * @returns {Element}
-   */
-  export const createWelcomeElement = () => {
-    const element = document.createElement('div');
-    element.innerHTML = String.raw`
+/**
+ * Create the welcome screen
+ * @returns {Element}
+ */
+export const createWelcomeElement = () => {
+  const element = document.createElement('div');
+  element.innerHTML = String.raw`
     <div class="flex justify-center mt-[5vh] md:mt-[10vh]">
     <img src="./public/images/logo.svg" alt="logo" class="h-24 sm:h-32 md:h-40 lg:h-50 w-auto">
       </div>

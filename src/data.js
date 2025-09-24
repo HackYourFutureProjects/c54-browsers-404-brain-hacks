@@ -14,8 +14,7 @@ export const quizData = {
   score: 0,
   questions: [
     {
-      text:
-        'Which of the following JavaScript snippets correctly swaps the values of a and b?',
+      text: 'Which of the following JavaScript snippets correctly swaps the values of a and b?',
       answers: {
         a: 'let temp = a; a = b; b = temp;',
         b: 'a = b; b = a;',
@@ -26,8 +25,7 @@ export const quizData = {
       selected: null,
     },
     {
-      text:
-        'Given the array [1, 2, 3, 5, 6], which number is missing to complete the sequence from 1 to 6?',
+      text: 'Given the array [1, 2, 3, 5, 6], which number is missing to complete the sequence from 1 to 6?',
       answers: {
         a: '2',
         b: '4',
@@ -38,8 +36,7 @@ export const quizData = {
       selected: null,
     },
     {
-      text:
-        'Which JavaScript expression will reverse the string "hello" correctly?',
+      text: 'Which JavaScript expression will reverse the string "hello" correctly?',
       answers: {
         a: 'str.split("").reverse().join("")',
         b: 'str.reverse()',
@@ -83,8 +80,7 @@ export const quizData = {
       selected: null,
     },
     {
-      text:
-        'Which snippet correctly finds the highest number in [2, 7, 1, 9, 5]?',
+      text: 'Which snippet correctly finds the highest number in [2, 7, 1, 9, 5]?',
       answers: {
         a: 'Math.max(...arr)',
         b: 'arr.min()',
@@ -117,8 +113,7 @@ export const quizData = {
       selected: null,
     },
     {
-      text:
-        'Which loop prints this star pattern in the console? "*", "**", "***", "****"',
+      text: 'Which loop prints this star pattern in the console? "*", "**", "***", "****"',
       answers: {
         a: 'for(let i=4;i>0;i--){console.log("*".repeat(i))}',
         b: 'for(let i=1;i<=4;i++){console.log("*".repeat(i))}',
@@ -129,9 +124,9 @@ export const quizData = {
       selected: null,
     },
   ],
-    reset() {
-      this.currentQuestionIndex = 0;
-      this.score = 0;
-      this.questions.forEach(q => (q.selected = null));
-    }, 
-  };
+  reset() {
+    this.currentQuestionIndex = 0;
+    this.score = 0;
+    this.questions.forEach((q) => (q.selected = null));
+  },
+};
