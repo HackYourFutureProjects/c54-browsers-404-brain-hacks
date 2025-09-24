@@ -19,10 +19,11 @@ export const initQuestionPage = () => {
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
   answersListElement.innerHTML = '';
 
-  Object.entries(currentQuestion.answers).forEach(([key, answerText], index) => {
-    const li = document.createElement('li');
-    li.className = 'w-full';
-    li.innerHTML = `
+  Object.entries(currentQuestion.answers).forEach(
+    ([key, answerText], index) => {
+      const li = document.createElement('li');
+      li.className = 'w-full';
+      li.innerHTML = `
       <button class="w-full py-4 px-6 
                      rounded-full 
                      border border-white 
@@ -36,8 +37,9 @@ export const initQuestionPage = () => {
         ${key}: ${answerText}
       </button>
     `;
-    answersListElement.appendChild(li);
-  });
+      answersListElement.appendChild(li);
+    }
+  );
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
