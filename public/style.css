@@ -1,51 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-@layer base {
-  body {
-    @apply font-poppins;
-  }
+
+.options-list {
+  cursor: pointer;       /* shows a hand cursor */
+  padding: 8px;
+  margin: 4px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: yellow;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.scrollable {
-  height: auto;
-  max-height: 80vh;
-  overflow: auto;
-}
-
-ul {
-  list-style: none;
-}
-
-.bg-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-}
-
-.bg-hero {
-  background-image: url('/public/images/bg.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: relative;
+.options-list:hover {
+  background-color: #f0f0f0; /* highlight on hover */
 }

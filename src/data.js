@@ -129,4 +129,11 @@ export const quizData = {
       selected: null,
     },
   ],
+
+  
 };
+
+
+//M// DELETE
+// const currentQuestionIndex= 0;
+// console.log(quizData.questions[currentQuestionIndex].answers.a);

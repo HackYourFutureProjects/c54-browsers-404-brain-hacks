@@ -1,23 +1,32 @@
 import { ANSWERS_LIST_ID } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
+import {SKIP_BUTTON_ID } from '../constants.js';
+import  {OPTION_ONE}   from '../constants.js';
+import  {OPTION_TWO}  from '../constants.js';
+import  {OPTION_THREE}  from '../constants.js';
+import  {OPTION_FOUR}  from '../constants.js';
+import  {quizData}  from '../data.js';
+
 
 /**
  * Create a full question element
  * @returns {Element}
  */
-export const createQuestionElement = (question) => {
-  const element = document.createElement('div');
+export const createQuestionElement = (question) => { //M// takes a question object
+  const element = document.createElement('div'); //M// creats a new div for the Q element
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
-    <h1>${question}</h1>
+    <h1>${question.text}</h1>
 
     <ul id="${ANSWERS_LIST_ID}">
+     
     </ul>
 
     <button id="${NEXT_QUESTION_BUTTON_ID}">
-      Next question
+           Next question
     </button>
+    <button id="${SKIP_BUTTON_ID}"> Skip </button>
   `;
 
   return element;
