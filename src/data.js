@@ -11,7 +11,7 @@
 
 export const quizData = {
   currentQuestionIndex: 0,
-  // the questions in the quiz
+  score: 0,
   questions: [
     {
       text:
@@ -129,4 +129,9 @@ export const quizData = {
       selected: null,
     },
   ],
-};
+    reset() {
+      this.currentQuestionIndex = 0;
+      this.score = 0;
+      this.questions.forEach(q => (q.selected = null));
+    }, 
+  };
