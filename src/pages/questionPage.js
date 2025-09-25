@@ -10,6 +10,7 @@ import { quizData } from '../data.js';
 import { initResultsPage } from './resultsPage.js';
 
 let uiBound = false;
+
 function handleUIClick(e) {
   const ui = document.getElementById(USER_INTERFACE_ID);
   if (!ui.contains(e.target)) return;

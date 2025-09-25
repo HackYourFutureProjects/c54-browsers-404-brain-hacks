@@ -102,17 +102,6 @@ export const quizData = {
       selected: null,
     },
     {
-      text: 'What JavaScript code sums all digits in 1234?',
-      answers: {
-        a: 'String(num).split("").map(Number).reduce((a,b)=>a+b)',
-        b: 'num % 10',
-        c: 'parseInt(num / 10)',
-        d: 'num + 1',
-      },
-      correct: 'a',
-      selected: null,
-    },
-    {
       text: 'Which loop prints this star pattern in the console? "*", "**", "***", "****"',
       answers: {
         a: 'for(let i=4;i>0;i--){console.log("*".repeat(i))}',
@@ -121,6 +110,17 @@ export const quizData = {
         d: 'for(let i=1;i<=4;i++){console.log(i)}',
       },
       correct: 'b',
+      selected: null,
+    },
+    {
+      text: 'What JavaScript code sums all digits in 1234?',
+      answers: {
+        a: 'String(num).split(""). map(Number).reduce((a,b)=>a+b)',
+        b: 'num % 10',
+        c: 'parseInt(num / 10)',
+        d: 'num + 1',
+      },
+      correct: 'a',
       selected: null,
     },
   ],
