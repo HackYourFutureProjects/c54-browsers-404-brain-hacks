@@ -7,9 +7,9 @@ import { SCORE_ID } from '../constants.js';
  * @returns {Element}
  */
 export const createQuestionElement = (question, index, total) => {
-    const element = document.createElement('div');
+  const element = document.createElement('div');
 
-    element.innerHTML = String.raw`
+  element.innerHTML = String.raw`
       <div class="flex flex-col items-center justify-center min-h-screen px-4">
   <div class="w-full max-w-3xl mb-6">
     <div class="flex items-center justify-between mb-2">
@@ -55,5 +55,5 @@ export const createQuestionElement = (question, index, total) => {
         </div>
     `;
 
-    return element;
+  return element;
 };
