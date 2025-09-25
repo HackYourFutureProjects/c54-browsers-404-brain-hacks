@@ -3,79 +3,81 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply font-poppins;
-  }
+    body {
+        @apply font-poppins;
+    }
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .scrollable {
-  height: auto;
-  max-height: 80vh;
-  overflow: auto;
+    height: auto;
+    max-height: 80vh;
+    overflow: auto;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 .bg-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
 }
 
 .bg-hero {
-  background-image: url('/public/images/bg.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: relative;
+    background-image: url('/public/images/bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
 }
+
 .answer--locked {
-  pointer-events: none;
-  opacity: 0.9;
+    pointer-events: none;
+    opacity: 0.9;
 }
 
 .answer--wrong {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: #ef4444;
-  color: #fecaca;
+    background: rgba(239, 68, 68, 0.15);
+    border-color: #ef4444;
+    color: #fecaca;
 }
 
 .answer--correct {
-  background: rgba(34, 197, 94, 0.18);
-  border-color: #22c55e;
-  color: #bbf7d0;
+    background: rgba(34, 197, 94, 0.18);
+    border-color: #22c55e;
+    color: #bbf7d0;
 }
 
 .answer--correct-hint {
-  background: rgba(34, 197, 94, 0.12);
-  border-color: #22c55e;
-  color: #bbf7d0;
+    background: rgba(34, 197, 94, 0.12);
+    border-color: #22c55e;
+    color: #bbf7d0;
 }
 
 .answer-btn {
-  transition: background 200ms ease, color 200ms ease, border-color 200ms ease,
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease,
     transform 150ms ease;
 }
+
 .answer-btn:hover {
-  transform: translateY(-1px);
+    transform: translateY(-1px);
 }
