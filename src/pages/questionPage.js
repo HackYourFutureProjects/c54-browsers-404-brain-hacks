@@ -3,6 +3,7 @@ import {
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
   SKIP_BUTTON_ID,
+  COUNTDOWN_ID,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
@@ -20,15 +21,29 @@ export const initQuestionPage = () => {
   const questionElement = createQuestionElement(currentQuestion);
 
   userInterface.appendChild(questionElement);
+  //M- Timer Start
+  const countdownEl = document.getElementById(COUNTDOWN_ID);
+  let time = 15;
+  countdownEl.innerText = time;
 
+  function updateCountdown() {
+    countdownEl.innerText = time;
+    time--;
+
+    if (time < 0) {
+      clearInterval(timer);
+      skipQuestion();
+    }
+  }
+
+  const timer = setInterval(updateCountdown, 1000);
+  //M- Timer End
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
-  //M//  trying to get the key
-  // const optionKey = currentQuestion.answers
 
   //
   document.getElementById(NEXT_QUESTION_BUTTON_ID).disabled = true; // disable Next Question at the start, before answering

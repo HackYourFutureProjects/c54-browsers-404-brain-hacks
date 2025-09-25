@@ -12,10 +12,5 @@ export const NEXT_QUESTION_BUTTON_ID = 'next-question-button';
 export const SHOW_ANSWER_BUTTON_ID = 'show-answer-button';
 export const USER_NAME_INPUT_ID = 'user-name';
 export const THEME_TOGGLE_ID = 'theme-toggle';
-export const SKIP_BUTTON_ID = 'skip-button'
-
-export const OPTION_ONE = 'option-one';
-export const OPTION_TWO = 'option-two';
-export const OPTION_THREE = 'option-three';
-export const OPTION_FOUR = 'option-four';  
-
+export const SKIP_BUTTON_ID = 'skip-button';
+export const COUNTDOWN_ID = 'countdown';
