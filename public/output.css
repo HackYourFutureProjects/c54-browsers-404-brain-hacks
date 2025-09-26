@@ -817,6 +817,10 @@ body {
   line-height: 1.75rem;
 }
 
+.text-\[20px\] {
+  font-size: 20px;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -861,6 +865,10 @@ body {
 
 .text-white\/90 {
   color: rgb(255 255 255 / 0.9);
+}
+
+.text-white\/80 {
+  color: rgb(255 255 255 / 0.8);
 }
 
 .placeholder-white\/70::-moz-placeholder {
@@ -1086,6 +1094,10 @@ ul {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+
+  .md\:text-\[24px\] {
+    font-size: 24px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1107,5 +1119,9 @@ ul {
 
   .lg\:text-\[72px\] {
     font-size: 72px;
+  }
+
+  .lg\:text-\[28px\] {
+    font-size: 28px;
   }
 }

@@ -53,12 +53,32 @@ function handleUIClick(e) {
     if (scoreEl) {
       scoreEl.textContent = `Score: ${quizData.score}/${quizData.questions.length}`;
     }
+
+    localStorage.setItem(
+      'quizData',
+      JSON.stringify({
+        questions: quizData.questions,
+        score: quizData.score,
+        currentQuestionIndex: quizData.currentQuestionIndex,
+      })
+    );
+
     return;
   }
 
   // Next
   if (nextBtn) {
     quizData.currentQuestionIndex += 1;
+
+    localStorage.setItem(
+      'quizData',
+      JSON.stringify({
+        questions: quizData.questions,
+        score: quizData.score,
+        currentQuestionIndex: quizData.currentQuestionIndex,
+      })
+    );
+
     initQuestionPage();
     return;
   }
@@ -67,6 +87,16 @@ function handleUIClick(e) {
   if (skipBtn) {
     if (!current.selected) current.selected = 'skipped';
     quizData.currentQuestionIndex += 1;
+
+    localStorage.setItem(
+      'quizData',
+      JSON.stringify({
+        questions: quizData.questions,
+        score: quizData.score,
+        currentQuestionIndex: quizData.currentQuestionIndex,
+      })
+    );
+
     initQuestionPage();
     return;
   }
@@ -76,7 +106,7 @@ export const initQuestionPage = () => {
   const ui = document.getElementById(USER_INTERFACE_ID);
   ui.innerHTML = '';
 
-  // final page?
+  // final page
   if (quizData.currentQuestionIndex >= quizData.questions.length) {
     initResultsPage();
     return;
