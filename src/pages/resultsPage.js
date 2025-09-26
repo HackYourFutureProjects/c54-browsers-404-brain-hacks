@@ -5,9 +5,10 @@ import { initQuestionPage } from './questionPage.js';
 export const initResultsPage = () => {
   const container = document.getElementById(USER_INTERFACE_ID);
 
-
   const savedData = JSON.parse(localStorage.getItem('quizData'));
-  const total = savedData ? savedData.questions.length : quizData.questions.length;
+  const total = savedData
+    ? savedData.questions.length
+    : quizData.questions.length;
   const score = savedData ? savedData.score : quizData.score;
 
   container.innerHTML = `
@@ -21,7 +22,6 @@ export const initResultsPage = () => {
   `;
 
   container.querySelector('#try-again').addEventListener('click', () => {
-
     localStorage.removeItem('quizData');
     quizData.reset();
     initQuestionPage();
