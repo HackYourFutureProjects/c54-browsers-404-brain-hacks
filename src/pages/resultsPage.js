@@ -45,8 +45,8 @@ export const initResultsPage = () => {
       datasets: [
         {
           label: 'Correct Answers',
-          data: (savedData ? savedData.questions : quizData.questions).map((q) =>
-            q.selected === q.correct ? 1 : 0
+          data: (savedData ? savedData.questions : quizData.questions).map(
+            (q) => (q.selected === q.correct ? 1 : 0)
           ),
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
