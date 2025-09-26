@@ -12,6 +12,18 @@ export const initWelcomePage = () => {
   document
     .getElementById(START_QUIZ_BUTTON_ID)
     .addEventListener('click', startQuiz);
+
+  const savedData = localStorage.getItem('quizData');
+  if (savedData) {
+    const continueBtn = document.createElement('button');
+    continueBtn.textContent = 'Continue Quiz';
+    continueBtn.id = 'continue-quiz-btn';
+    userInterface.appendChild(continueBtn);
+
+    continueBtn.addEventListener('click', () => {
+      initQuestionPage();
+    });
+  }
 };
 
 const startQuiz = () => {
