@@ -1,6 +1,7 @@
 import { USER_INTERFACE_ID } from '../constants.js';
 import { quizData } from '../data.js';
 import { initQuestionPage } from './questionPage.js';
+import { stopTotalTimer, totalStartTime } from './timer.js';
 
 export const initResultsPage = () => {
   const container = document.getElementById(USER_INTERFACE_ID);
@@ -10,6 +11,8 @@ export const initResultsPage = () => {
     ? savedData.questions.length
     : quizData.questions.length;
   const score = savedData ? savedData.score : quizData.score;
+
+  const totalElapsed = Math.floor((Date.now() - totalStartTime) / 1000);
 
   container.innerHTML = `
    <div class="flex flex-col items-center justify-center min-h-screen px-4">
@@ -25,6 +28,10 @@ export const initResultsPage = () => {
     Your score: <span class="font-semibold">${score}</span> / ${total}
   </p>
 
+<p class="text-white/90 mb-4 text-center px-4 py-2 bg-bluur border border-gray-500 font-semibold rounded-full shadow-lg text-lg md:text-xl flex items-center justify-center gap-2">
+  You completed the quiz in <span class="font-semibold">${totalElapsed}</span> seconds.
+</p>
+
   <button
     id="try-again"
     class="bg-gradient-to-r from-custom-green to-custom-green-dark text-black font-medium py-4 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 min-w-[200px]"
@@ -33,6 +40,8 @@ export const initResultsPage = () => {
   </button>
 </div>
   `;
+
+  stopTotalTimer();
 
   const ctx = document.getElementById('resultsChart').getContext('2d');
 
