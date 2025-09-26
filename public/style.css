@@ -42,12 +42,13 @@ ul {
 }
 
 .bg-hero {
-  background-image: url('/public/images/bg.jpeg');
+  background-image: url('/public/images/bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
+  transition: opacity 2.5s ease-in-out;
 }
 
 .answer--locked {
@@ -80,4 +81,18 @@ ul {
 
 .answer-btn:hover {
   transform: translateY(-1px);
+}
+
+@keyframes pulseLogo {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-logo {
+  animation: pulseLogo 3s ease-in-out infinite;
 }

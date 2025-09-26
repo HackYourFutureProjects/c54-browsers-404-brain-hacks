@@ -8,18 +8,20 @@ export const createWelcomeElement = () => {
   const element = document.createElement('div');
   element.innerHTML = String.raw`
     <div class="flex justify-center mt-[5vh] md:mt-[10vh]">
-    <img src="./public/images/logo.svg" alt="logo" class="h-24 sm:h-32 md:h-40 lg:h-50 w-auto">
-      </div>
+  <img src="./public/images/logo.svg" alt="logo" class="h-24 sm:h-32 md:h-40 lg:h-50 w-auto animate-pulse-logo">
+    </div>
 
-      <h2 class="text-white text-lg font-medium mb-8 tracking-widest">404 BRAIN HACKS</h2>
+      <h2 class="text-white text-lg hover:text-orange-500 font-medium mb-8 tracking-widest">404 BRAIN HACKS</h2>
       
-      <h1 class="text-white text-[44px] md:text-[48px] lg:text-[72px] font-bold mb-6 tracking-wide text-center">
+     <h1 class="text-white text-[44px] md:text-[48px] lg:text-[72px] font-bold mb-6 tracking-wide text-center 
+           transition-colors duration-500 ease-in-out hover:text-orange-600">
     QUIZ IQ PROGRAMMING
-      </h1>
-      
-      <p class="text-white/90 text-[16px] md:text-[18px] lg:text-[20px] mb-12 max-w-md mx-auto">
-          This project is an interactive quiz with 10 questions and four answer options for each.
-      </p>
+</h1>
+
+<p class="text-white/90 text-[16px] md:text-[18px] lg:text-[20px] mb-12 max-w-md mx-auto 
+          transition-colors duration-500 ease-in-out hover:text-orange-600">
+    This project is an interactive quiz with 10 questions and four answer options for each.
+</p>
       
       <button 
           id="${START_QUIZ_BUTTON_ID}"
@@ -35,7 +37,7 @@ export const createWelcomeElement = () => {
         class="w-full max-w-md bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 py-4 px-6 rounded-full text-center font-medium text-lg outline-none focus:border-white/40 focus:bg-white/20 transition-all duration-300"
     />
     
-    <p class="text-white/70 text-[14px] md:text-[16px] lg:text-[18px] mt-8 max-w-md mx-auto">
+    <p class="text-white/70 hover:text-orange-500 text-[14px] md:text-[16px] lg:text-[18px] mt-8 max-w-md mx-auto">
         It helps users test their knowledge of the DOM and JavaScript in a fun way.
     </p>
     
