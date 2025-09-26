@@ -7,6 +7,7 @@ import { START_QUIZ_BUTTON_ID, USER_NAME_INPUT_ID } from '../constants.js';
 export const createWelcomeElement = () => {
   const element = document.createElement('div');
   element.innerHTML = String.raw`
+
     <div class="flex justify-center mt-[5vh] md:mt-[10vh]">
   <img src="./public/images/logo.svg" alt="logo" class="h-24 sm:h-32 md:h-40 lg:h-50 w-auto animate-pulse-logo">
     </div>
@@ -42,8 +43,7 @@ export const createWelcomeElement = () => {
     </p>
     
     <p class="text-white/50 text-[12px] md:text-[14px] lg:text-[16px] mt-8">
-        2025 404 brain hacks. All rights reserved.<br>
-        This quiz is created for educational and entertainment purposes only. The questions are designed to test knowledge of DOM and JavaScript. Results should not be considered as professional certification.
+        &copy; 2025 404 brain hacks. All rights reserved.<br>
     </p>
   `;
   return element;

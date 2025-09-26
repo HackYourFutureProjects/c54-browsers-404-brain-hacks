@@ -8,6 +8,7 @@ import {
 import { createQuestionElement } from '../views/questionView.js';
 import { quizData } from '../data.js';
 import { initResultsPage } from './resultsPage.js';
+import { startTotalTimer } from './timer.js';
 
 let uiBound = false;
 
@@ -145,6 +146,7 @@ export const initQuestionPage = () => {
     scoreEl.textContent = `Score: ${quizData.score}/${quizData.questions.length}`;
   }
 
+  startTotalTimer();
   // bind the delegated listener once
   if (!uiBound) {
     document.addEventListener('click', handleUIClick);
