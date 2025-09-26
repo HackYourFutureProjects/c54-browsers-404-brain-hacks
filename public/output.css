@@ -642,6 +642,10 @@ body {
   height: 1rem;
 }
 
+.h-60 {
+  height: 15rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -782,11 +786,6 @@ body {
   text-align: center;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
 .text-\[12px\] {
   font-size: 12px;
 }
@@ -817,8 +816,18 @@ body {
   line-height: 1.75rem;
 }
 
-.text-\[20px\] {
-  font-size: 20px;
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-\[24px\] {
+  font-size: 24px;
 }
 
 .font-bold {
@@ -865,10 +874,6 @@ body {
 
 .text-white\/90 {
   color: rgb(255 255 255 / 0.9);
-}
-
-.text-white\/80 {
-  color: rgb(255 255 255 / 0.8);
 }
 
 .placeholder-white\/70::-moz-placeholder {
@@ -1014,6 +1019,10 @@ ul {
   animation: pulseLogo 3s ease-in-out infinite;
 }
 
+#resultsChart {
+  max-height: 350px;
+}
+
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
@@ -1054,6 +1063,10 @@ ul {
   .sm\:h-32 {
     height: 8rem;
   }
+
+  .sm\:h-72 {
+    height: 18rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1065,9 +1078,8 @@ ul {
     height: 10rem;
   }
 
-  .md\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+  .md\:h-80 {
+    height: 20rem;
   }
 
   .md\:text-\[14px\] {
@@ -1095,12 +1107,21 @@ ul {
     line-height: 1.75rem;
   }
 
-  .md\:text-\[24px\] {
-    font-size: 24px;
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\:text-\[28px\] {
+    font-size: 28px;
   }
 }
 
 @media (min-width: 1024px) {
+  .lg\:h-96 {
+    height: 24rem;
+  }
+
   .lg\:text-\[16px\] {
     font-size: 16px;
   }
@@ -1121,7 +1142,7 @@ ul {
     font-size: 72px;
   }
 
-  .lg\:text-\[28px\] {
-    font-size: 28px;
+  .lg\:text-\[36px\] {
+    font-size: 36px;
   }
 }

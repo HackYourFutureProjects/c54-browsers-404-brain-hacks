@@ -96,3 +96,7 @@ ul {
 .animate-pulse-logo {
   animation: pulseLogo 3s ease-in-out infinite;
 }
+
+#resultsChart {
+  max-height: 350px;
+}
