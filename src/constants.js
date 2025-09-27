@@ -14,3 +14,5 @@ export const SHOW_ANSWER_BUTTON_ID = 'show-answer-button';
 export const USER_NAME_INPUT_ID = 'user-name';
 export const THEME_TOGGLE_ID = 'theme-toggle';
 export const SCORE_ID = 'score';
+export const SKIP_COUNTER = 'skip-counter';
+export const COUNTDOWN_ID = 'countdown';
