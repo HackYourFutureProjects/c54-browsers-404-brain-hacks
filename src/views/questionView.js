@@ -1,12 +1,16 @@
 import { ANSWERS_LIST_ID } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
 import { SKIP_QUESTION_BUTTON_ID } from '../constants.js';
+import { SKIP_COUNTER } from '../constants.js';
 import { SCORE_ID } from '../constants.js';
+import { COUNTDOWN_ID } from '../constants.js';
+// import { skipCounter } from '../pages/questionPage.js';
+
 /**
  * Create a full question element
  * @returns {Element}
  */
-export const createQuestionElement = (question, index, total) => {
+export const createQuestionElement = (question, index, total, skips, timer) => {
   const element = document.createElement('div');
 
   element.innerHTML = String.raw`
@@ -14,6 +18,10 @@ export const createQuestionElement = (question, index, total) => {
   <div class="w-full max-w-3xl mb-6">
     <div class="flex items-center justify-between mb-2">
       <div id="${SCORE_ID}" class="text-white/90 font-semibold text-lg md:text-xl">Score: 0/${total}</div>
+      <div id="${SKIP_COUNTER}" class="text-white/90 font-semibold text-lg md:text-xl">Skips left: ${
+    3 - skips
+  } </div>
+  <div id="${COUNTDOWN_ID}" class="text-white/90 font-semibold text-lg md:text-xl">Time left: ${timer}</div>
       <div class="text-white/70 text-lg md:text-xl">Q ${index} / ${total}</div>
     </div>
     <div class="w-full bg-white/20 rounded-full h-4">
