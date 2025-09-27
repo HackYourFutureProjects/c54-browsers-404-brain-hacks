@@ -106,10 +106,13 @@ function handleUIClick(e) {
     return;
   }
 
-  // Next
-  if (nextBtn && e.target.closest(`#${NEXT_QUESTION_BUTTON_ID}`)) {
-    soundNext.play(); // play Next sound effect
-    quizData.currentQuestionIndex += 1;
+    // Next
+    if (nextBtn && e.target.closest(`#${NEXT_QUESTION_BUTTON_ID}`)) {
+        if (!current.selected) {
+      return;
+    }
+      soundNext.play(); // play Next sound effect
+      quizData.currentQuestionIndex += 1;
 
     localStorage.setItem(
       'quizData',
