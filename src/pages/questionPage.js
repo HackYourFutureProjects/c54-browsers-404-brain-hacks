@@ -4,22 +4,53 @@ import {
   SKIP_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
   SCORE_ID,
+  COUNTDOWN_ID,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { quizData } from '../data.js';
 import { initResultsPage } from './resultsPage.js';
 
+const soundCorrect = new Audio('../sounds/correct.mp3');
+const soundNext = new Audio('../sounds/next.mp3');
+const soundSkip = new Audio('../sounds/skip.mp3');
+const soundTimer = new Audio('../sounds/timer.mp3');
+const soundWrong = new Audio('../sounds/wrong.mp3');
+
 let uiBound = false;
+let skipCounter = 0; // counts how many times user skipped
+let countdown = 15;
+let timer;
+
+const quizTimer = () => {
+  countdown--;
+
+  const timerEl = document.getElementById(COUNTDOWN_ID);
+  if (timerEl) {
+    timerEl.textContent = `Time left: ${countdown}`;
+  }
+
+  if (countdown <= 5 && countdown > 0) {
+    soundTimer.play();
+  }
+
+  if (countdown <= 0) {
+    clearInterval(timer);
+    alert('Time is up');
+    quizData.currentQuestionIndex += 1;
+    initQuestionPage();
+  }
+};
+
+// End of timer
 
 function handleUIClick(e) {
   const ui = document.getElementById(USER_INTERFACE_ID);
   if (!ui.contains(e.target)) return;
 
-  const nextBtn = e.target.closest(`#${NEXT_QUESTION_BUTTON_ID}`);
-  const skipBtn = e.target.closest(`#${SKIP_QUESTION_BUTTON_ID}`);
+  const nextBtn = document.getElementById(NEXT_QUESTION_BUTTON_ID);
+  const skipBtn = document.getElementById(SKIP_QUESTION_BUTTON_ID);
   const answerBtn = e.target.closest('.answer-btn');
 
-  // current question reference
   const idx = quizData.currentQuestionIndex;
   const current = quizData.questions[idx];
   if (!current) return;
@@ -34,9 +65,11 @@ function handleUIClick(e) {
     const buttons = [...answersList.querySelectorAll('.answer-btn')];
 
     if (chosenKey === current.correct) {
+      soundCorrect.play();
       answerBtn.classList.add('answer--correct');
       quizData.score += 1;
     } else {
+      soundWrong.play();
       answerBtn.classList.add('answer--wrong');
       const correctBtn = buttons.find((b) => b.dataset.key === current.correct);
       if (correctBtn) correctBtn.classList.add('answer--correct-hint');
@@ -44,39 +77,63 @@ function handleUIClick(e) {
 
     // lock all answer buttons
     buttons.forEach((b) => {
-      b.classList.add('answer--locked');
       b.disabled = true;
     });
+
+    // enable Next button after choosing an answer
+    if (nextBtn) nextBtn.disabled = false;
+
+    // disable Skip after choosing an answer
+    if (skipBtn) skipBtn.disabled = true;
 
     // update live score
     const scoreEl = document.getElementById(SCORE_ID);
     if (scoreEl) {
       scoreEl.textContent = `Score: ${quizData.score}/${quizData.questions.length}`;
     }
-    return;
   }
 
   // Next
-  if (nextBtn) {
+  if (nextBtn && e.target.closest(`#${NEXT_QUESTION_BUTTON_ID}`)) {
+    soundNext.play(); // play Next sound effect
     quizData.currentQuestionIndex += 1;
-    initQuestionPage();
+    setTimeout(initQuestionPage, 500);
     return;
   }
 
   // Skip (no score)
-  if (skipBtn) {
+  if (skipBtn && e.target.closest(`#${SKIP_QUESTION_BUTTON_ID}`)) {
+    skipCounter += 1;
+    soundSkip.play(); // play the skip sound effect
+    if (skipCounter >= 3) {
+      alert('You have skipped 3 times. Quiz is ended');
+      initResultsPage();
+      return;
+    }
+
     if (!current.selected) current.selected = 'skipped';
     quizData.currentQuestionIndex += 1;
-    initQuestionPage();
+    setTimeout(initQuestionPage, 600); // short delay so the sound plays before moving to the next Q
     return;
   }
 }
 
 export const initQuestionPage = () => {
+  // stop previous timer and reset countdown
+  clearInterval(timer);
+  countdown = 15;
+
+  // start timer for current question
+  timer = setInterval(quizTimer, 1000);
+
+  // Reset skip counter at the beginning of the game
+  if (quizData.currentQuestionIndex === 0) {
+    skipCounter = 0;
+  }
+
   const ui = document.getElementById(USER_INTERFACE_ID);
   ui.innerHTML = '';
 
-  // final page?
   if (quizData.currentQuestionIndex >= quizData.questions.length) {
     initResultsPage();
     return;
@@ -88,7 +145,9 @@ export const initQuestionPage = () => {
   const questionEl = createQuestionElement(
     current.text,
     quizData.currentQuestionIndex + 1,
-    quizData.questions.length
+    quizData.questions.length,
+    skipCounter,
+    timer
   );
   ui.appendChild(questionEl);
 
@@ -114,6 +173,20 @@ export const initQuestionPage = () => {
   if (scoreEl) {
     scoreEl.textContent = `Score: ${quizData.score}/${quizData.questions.length}`;
   }
+
+  // show initial timer value
+  const timerEl = document.getElementById(COUNTDOWN_ID);
+  if (timerEl) {
+    timerEl.textContent = `Time left: ${countdown}`;
+  }
+
+  // disable Next button at the start
+  const nextBtn = document.getElementById(NEXT_QUESTION_BUTTON_ID);
+  if (nextBtn) nextBtn.disabled = true;
+
+  // enable Skip button at start of question
+  const skipBtn = document.getElementById(SKIP_QUESTION_BUTTON_ID);
+  if (skipBtn) skipBtn.disabled = false;
 
   // bind the delegated listener once
   if (!uiBound) {

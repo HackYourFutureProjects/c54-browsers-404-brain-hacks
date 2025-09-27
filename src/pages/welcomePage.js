@@ -6,6 +6,7 @@ import {
 import { createWelcomeElement } from '../views/welcomeView.js';
 import { initQuestionPage } from './questionPage.js';
 
+const soundstart = new Audio('../sounds/start.mp3');
 export const initWelcomePage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
@@ -29,5 +30,6 @@ export const initWelcomePage = () => {
 };
 
 const startQuiz = () => {
-  initQuestionPage();
+  soundstart.play();
+  setTimeout(initQuestionPage, 1000);
 };
