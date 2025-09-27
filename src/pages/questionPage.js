@@ -108,6 +108,9 @@ function handleUIClick(e) {
 
   // Next
   if (nextBtn && e.target.closest(`#${NEXT_QUESTION_BUTTON_ID}`)) {
+    if (!current.selected) {
+      return;
+    }
     soundNext.play(); // play Next sound effect
     quizData.currentQuestionIndex += 1;
 
