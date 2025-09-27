@@ -67,9 +67,19 @@ function handleUIClick(e) {
     return;
   }
 
+<<<<<<< HEAD
   // Next
   if (nextBtn) {
     quizData.currentQuestionIndex += 1;
+=======
+    // Next
+    if (nextBtn && e.target.closest(`#${NEXT_QUESTION_BUTTON_ID}`)) {
+        if (!current.selected) {
+      return;
+    }
+      soundNext.play(); // play Next sound effect
+      quizData.currentQuestionIndex += 1;
+>>>>>>> 99cd277 (modify-next-button)
 
     localStorage.setItem(
       'quizData',
