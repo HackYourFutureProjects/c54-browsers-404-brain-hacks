@@ -13,10 +13,10 @@ export const createWelcomeElement = () => {
     </div>
 
       <h2 class="text-white text-lg hover:text-orange-500 font-medium mb-8 tracking-widest">404 BRAIN HACKS</h2>
-        
-      <h1 class="text-white text-[44px] md:text-[48px] lg:text-[72px] font-bold mb-6 tracking-wide text-center 
-            transition-colors duration-500 ease-in-out hover:text-orange-600">
-      QUIZ IQ PROGRAMMING
+      
+     <h1 class="text-white text-[44px] md:text-[48px] lg:text-[72px] font-bold mb-6 tracking-wide text-center 
+           transition-colors duration-500 ease-in-out hover:text-orange-600">
+    QUIZ IQ PROGRAMMING
 </h1>
 
 <p class="text-white/90 text-[16px] md:text-[18px] lg:text-[20px] mb-12 max-w-md mx-auto 
