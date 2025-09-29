@@ -15,7 +15,7 @@ export const initResultsPage = () => {
 
   const totalElapsed = Math.floor((Date.now() - totalStartTime) / 1000);
 
-    container.innerHTML = `
+  container.innerHTML = `
     <div class="flex flex-col items-center justify-center min-h-screen px-4">
     <h2 class="text-[24px] md:text-[28px] lg:text-[36px] font-bold text-white mb-4 text-center">
       Quiz Complete!
@@ -85,6 +85,6 @@ export const initResultsPage = () => {
   container.querySelector('#try-again').addEventListener('click', () => {
     localStorage.removeItem('quizData');
     quizData.reset();
-    initWelcomePage();;
+    initWelcomePage();
   });
 };
