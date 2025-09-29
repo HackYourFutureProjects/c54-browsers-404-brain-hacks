@@ -62,6 +62,8 @@ function handleUIClick(e) {
     if (current.selected) return; // already answered/locked
     const chosenKey = answerBtn.dataset.key;
     current.selected = chosenKey;
+    // clearInterval(timer);
+    // soundTimer.pause();
 
     const answersList = document.getElementById(ANSWERS_LIST_ID);
     const buttons = [...answersList.querySelectorAll('.answer-btn')];
