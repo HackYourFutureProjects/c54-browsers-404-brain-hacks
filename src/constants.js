@@ -12,5 +12,4 @@ export const NEXT_QUESTION_BUTTON_ID = 'next-question-button';
 export const SKIP_QUESTION_BUTTON_ID = 'skip-question-button';
 export const SHOW_ANSWER_BUTTON_ID = 'show-answer-button';
 export const USER_NAME_INPUT_ID = 'user-name';
-export const THEME_TOGGLE_ID = 'theme-toggle';
 export const SCORE_ID = 'score';
